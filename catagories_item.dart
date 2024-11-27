@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
 
-class CategoriesItem extends StatelessWidget {
+class CategoriesItem extends StatefulWidget {
   const CategoriesItem({super.key});
 
   @override
+  State<CategoriesItem> createState() => _CategoriesItemState();
+}
+
+class _CategoriesItemState extends State<CategoriesItem> {
+  @override
   Widget build(BuildContext context) {
+    List<Map> catagories = [
+      {"name": "Fashion", "icon": Icons.man},
+      {"name": "Electronic", "icon": Icons.electric_bike},
+      {"name": "Apple store", "icon": Icons.apple},
+      {"name": "Mobile Store", "icon": Icons.mobile_friendly},
+      {"name": "Baby collection", "icon": Icons.baby_changing_station},
+      {"name": "Fashion", "icon": Icons.man},
+      {"name": "Electronic", "icon": Icons.electric_bike},
+      {"name": "Apple store", "icon": Icons.apple},
+      {"name": "Mobile Store", "icon": Icons.mobile_friendly},
+      {"name": "Baby collection", "icon": Icons.baby_changing_station},
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, // Align text to start
       children: [
@@ -28,9 +45,9 @@ class CategoriesItem extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 100,
+          height: 90,
           child: ListView.separated(
-            itemCount: 10,
+            itemCount: catagories.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Column(
@@ -41,12 +58,17 @@ class CategoriesItem extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.green.withOpacity(.2),
                         shape: BoxShape.circle),
+                    child: Icon(catagories[index]['icon']),
+                  ),
+                  Text(
+                    catagories[index]['name'],
+                    style: TextStyle(fontSize: 10),
                   )
                 ],
               );
             },
             separatorBuilder: (context, index) {
-              return SizedBox(
+              return const SizedBox(
                 width: 10,
               );
             },
