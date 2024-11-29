@@ -1,27 +1,39 @@
+import 'package:firebase_ecom/catagories_page.dart';
+import 'package:firebase_ecom/products_section.dart';
+import 'package:firebase_ecom/slider_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ecom_firebase/catagories_item.dart';
-import 'package:flutter_ecom_firebase/product_section.dart';
-import 'package:flutter_ecom_firebase/slider_section.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_bag)),
+        ],
+        title: const Text('HomePage'),
       ),
-      body: SingleChildScrollView(
-        // Prevent overflow by making content scrollable
-        child: Column(
-          children: const [
-            CategoriesItem(),
-            SizedBox(height: 15),
-            SliderSection(),
-            SizedBox(height: 15),
-            ProductSection(),
-          ],
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                CatagoriesPage(),
+                SliderSection(),
+                SizedBox(
+                  height: 10,
+                ),
+                ProductsSection(),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       drawer: const Drawer(),
